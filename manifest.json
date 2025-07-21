@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "IG Profile Analyzer",
-  "version": "1.0",
+  "name": "Unfollowers by vxnquish",
+  "version": "1.1",
   "description": "See who follows you and who doesn’t.",
   "icons": {
     "48": "icons/icon48.png",
