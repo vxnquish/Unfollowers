@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "IG Profile Analyzer",
+  "version": "1.0",
+  "description": "See who follows you and who doesn’t.",
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; object-src 'self'; connect-src 'self' https://www.instagram.com; img-src 'self' https: data:;"
+  }
+}

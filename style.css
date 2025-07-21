@@ -1,0 +1,203 @@
+/* style.css */
+
+/* Base reset & font */
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  width: 320px;
+  height: 480px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Container wrapper */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+/* Main content area */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header styling */
+h4 {
+  margin: 24px 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  letter-spacing: -0.2px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Special styling for the third button */
+button:nth-of-type(3) {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+button:nth-of-type(3):hover {
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.4);
+}
+
+/* Results container */
+ul#results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 280px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Custom scrollbar */
+ul#results::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul#results::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+ul#results::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+ul#results::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Individual result items */
+ul#results li {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+ul#results li:last-child {
+  border-bottom: none;
+}
+
+ul#results li:hover {
+  background: #f8f9ff;
+}
+
+/* Avatar styling */
+ul#results li img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #e1e8ed;
+  transition: border-color 0.2s ease;
+}
+
+ul#results li:hover img {
+  border-color: #667eea;
+}
+
+/* Username styling */
+ul#results li span {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Loading & error states */
+.loading {
+  text-align: center;
+  font-style: italic;
+  color: #7f8c8d;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 8px;
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
+  padding: 16px;
+  background: #fdf2f2;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Empty state styling */
+ul#results:empty::before {
+  content: "No results to display";
+  display: block;
+  text-align: center;
+  color: #95a5a6;
+  font-style: italic;
+  padding: 32px 16px;
+}
